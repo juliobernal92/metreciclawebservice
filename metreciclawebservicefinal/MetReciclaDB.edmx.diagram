@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="353203a2d9cf46b2bc567d7592c22798" Name="Diagram1">
+        <EntityTypeShape EntityType="metreciclawebfinalModel.Caja" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.Chatarra" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.DetallesCompra" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.DetallesVenta" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.Empleados" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.Gastos" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.LocalVenta" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.PrecioVenta" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.TicketCompra" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.TicketVenta" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.TotalCompra" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.TotalVenta" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.Usuarios" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="metreciclawebfinalModel.Vendedores" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__DetallesC__idcha__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__PrecioVen__idcha__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__DetallesC__idtic__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__DetallesV__idpre__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__DetallesV__idtic__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__Usuarios__idempl__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__PrecioVen__idloc__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__TicketCom__idusu__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__TicketCom__idven__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__TotalComp__idtic__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__TicketVen__idusu__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="metreciclawebfinalModel.FK__TotalVent__idtic__59FA5E80" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

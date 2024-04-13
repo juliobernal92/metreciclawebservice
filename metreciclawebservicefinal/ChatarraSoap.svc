@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MetReciclaWebServiceFinal.ChatarraSoap" CodeBehind="ChatarraSoap.svc.cs" %>

@@ -1,0 +1,12 @@
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\bin\MetReciclaWebServiceFinal.dll.config
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\bin\MetReciclaWebServiceFinal.dll
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\bin\MetReciclaWebServiceFinal.pdb
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\bin\EntityFramework.dll
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\bin\EntityFramework.SqlServer.dll
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\bin\EntityFramework.xml
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\bin\EntityFramework.SqlServer.xml
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\obj\Debug\MetReciclaWebServiceFinal.csproj.AssemblyReference.cache
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\obj\Debug\MetReciclaWebServiceFinal.csproj.CoreCompileInputs.cache
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\obj\Debug\MetReciclaWebServiceFinal.csproj.CopyComplete
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\obj\Debug\MetReciclaWebServiceFinal.dll
+C:\Users\Doomed666\Desktop\Lenguajes Visuales II\MetReciclaWebServiceFinal\MetReciclaWebServiceFinal\obj\Debug\MetReciclaWebServiceFinal.pdb

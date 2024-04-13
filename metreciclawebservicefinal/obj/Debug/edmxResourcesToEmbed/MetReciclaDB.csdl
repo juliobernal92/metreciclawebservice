@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="metreciclawebfinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Caja">
+    <Key>
+      <PropertyRef Name="idcaja" />
+    </Key>
+    <Property Name="idcaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="saldoinicial" Type="Int32" />
+    <Property Name="montoactual" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Chatarra">
+    <Key>
+      <PropertyRef Name="idchatarra" />
+    </Key>
+    <Property Name="idchatarra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="preciocompra" Type="Int32" />
+    <NavigationProperty Name="DetallesCompra" Relationship="Self.FK__DetallesC__idcha__5070F446" FromRole="Chatarra" ToRole="DetallesCompra" />
+    <NavigationProperty Name="PrecioVenta" Relationship="Self.FK__PrecioVen__idcha__5441852A" FromRole="Chatarra" ToRole="PrecioVenta" />
+  </EntityType>
+  <EntityType Name="DetallesCompra">
+    <Key>
+      <PropertyRef Name="iddetallecompra" />
+    </Key>
+    <Property Name="iddetallecompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idchatarra" Type="Int32" />
+    <Property Name="idticketcompra" Type="Int32" />
+    <Property Name="cantidad" Type="Decimal" Precision="10" Scale="1" />
+    <Property Name="subtotal" Type="Double" />
+    <NavigationProperty Name="Chatarra" Relationship="Self.FK__DetallesC__idcha__5070F446" FromRole="DetallesCompra" ToRole="Chatarra" />
+    <NavigationProperty Name="TicketCompra" Relationship="Self.FK__DetallesC__idtic__5165187F" FromRole="DetallesCompra" ToRole="TicketCompra" />
+  </EntityType>
+  <EntityType Name="DetallesVenta">
+    <Key>
+      <PropertyRef Name="iddetallesventa" />
+    </Key>
+    <Property Name="iddetallesventa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idprecioventa" Type="Int32" />
+    <Property Name="cantidad" Type="Decimal" Precision="10" Scale="1" />
+    <Property Name="subtotal" Type="Int32" />
+    <Property Name="idticketventa" Type="Int32" />
+    <NavigationProperty Name="PrecioVenta" Relationship="Self.FK__DetallesV__idpre__52593CB8" FromRole="DetallesVenta" ToRole="PrecioVenta" />
+    <NavigationProperty Name="TicketVenta" Relationship="Self.FK__DetallesV__idtic__534D60F1" FromRole="DetallesVenta" ToRole="TicketVenta" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="idempleado" />
+    </Key>
+    <Property Name="idempleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__idempl__5AEE82B9" FromRole="Empleados" ToRole="Usuarios" />
+    <Property Name="contraseña" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Gastos">
+    <Key>
+      <PropertyRef Name="idgasto" />
+    </Key>
+    <Property Name="idgasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="concepto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="LocalVenta">
+    <Key>
+      <PropertyRef Name="idlocalventa" />
+    </Key>
+    <Property Name="idlocalventa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PrecioVenta" Relationship="Self.FK__PrecioVen__idloc__5535A963" FromRole="LocalVenta" ToRole="PrecioVenta" />
+  </EntityType>
+  <EntityType Name="PrecioVenta">
+    <Key>
+      <PropertyRef Name="idprecioventa" />
+    </Key>
+    <Property Name="idprecioventa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idchatarra" Type="Int32" />
+    <Property Name="idlocalventa" Type="Int32" />
+    <Property Name="precioventa1" Type="Int32" />
+    <NavigationProperty Name="Chatarra" Relationship="Self.FK__PrecioVen__idcha__5441852A" FromRole="PrecioVenta" ToRole="Chatarra" />
+    <NavigationProperty Name="DetallesVenta" Relationship="Self.FK__DetallesV__idpre__52593CB8" FromRole="PrecioVenta" ToRole="DetallesVenta" />
+    <NavigationProperty Name="LocalVenta" Relationship="Self.FK__PrecioVen__idloc__5535A963" FromRole="PrecioVenta" ToRole="LocalVenta" />
+  </EntityType>
+  <EntityType Name="TicketCompra">
+    <Key>
+      <PropertyRef Name="idticketcompra" />
+    </Key>
+    <Property Name="idticketcompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="idvendedor" Type="Int32" />
+    <Property Name="idusuario" Type="Int32" />
+    <NavigationProperty Name="DetallesCompra" Relationship="Self.FK__DetallesC__idtic__5165187F" FromRole="TicketCompra" ToRole="DetallesCompra" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__TicketCom__idusu__5629CD9C" FromRole="TicketCompra" ToRole="Usuarios" />
+    <NavigationProperty Name="Vendedores" Relationship="Self.FK__TicketCom__idven__571DF1D5" FromRole="TicketCompra" ToRole="Vendedores" />
+    <NavigationProperty Name="TotalCompra" Relationship="Self.FK__TotalComp__idtic__59063A47" FromRole="TicketCompra" ToRole="TotalCompra" />
+  </EntityType>
+  <EntityType Name="TicketVenta">
+    <Key>
+      <PropertyRef Name="idticketventa" />
+    </Key>
+    <Property Name="idticketventa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="idusuario" Type="Int32" />
+    <NavigationProperty Name="DetallesVenta" Relationship="Self.FK__DetallesV__idtic__534D60F1" FromRole="TicketVenta" ToRole="DetallesVenta" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__TicketVen__idusu__5812160E" FromRole="TicketVenta" ToRole="Usuarios" />
+    <NavigationProperty Name="TotalVenta" Relationship="Self.FK__TotalVent__idtic__59FA5E80" FromRole="TicketVenta" ToRole="TotalVenta" />
+  </EntityType>
+  <EntityType Name="TotalCompra">
+    <Key>
+      <PropertyRef Name="idtotalcompra" />
+    </Key>
+    <Property Name="idtotalcompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idticketcompra" Type="Int32" />
+    <Property Name="total" Type="Int32" />
+    <NavigationProperty Name="TicketCompra" Relationship="Self.FK__TotalComp__idtic__59063A47" FromRole="TotalCompra" ToRole="TicketCompra" />
+  </EntityType>
+  <EntityType Name="TotalVenta">
+    <Key>
+      <PropertyRef Name="idtotalventa" />
+    </Key>
+    <Property Name="idtotalventa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idticketventa" Type="Int32" />
+    <Property Name="totalventa1" Type="Int32" />
+    <NavigationProperty Name="TicketVenta" Relationship="Self.FK__TotalVent__idtic__59FA5E80" FromRole="TotalVenta" ToRole="TicketVenta" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreusuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contraseña" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idempleado" Type="Int32" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK__Usuarios__idempl__5AEE82B9" FromRole="Usuarios" ToRole="Empleados" />
+    <NavigationProperty Name="TicketCompra" Relationship="Self.FK__TicketCom__idusu__5629CD9C" FromRole="Usuarios" ToRole="TicketCompra" />
+    <NavigationProperty Name="TicketVenta" Relationship="Self.FK__TicketVen__idusu__5812160E" FromRole="Usuarios" ToRole="TicketVenta" />
+  </EntityType>
+  <EntityType Name="Vendedores">
+    <Key>
+      <PropertyRef Name="idvendedor" />
+    </Key>
+    <Property Name="idvendedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TicketCompra" Relationship="Self.FK__TicketCom__idven__571DF1D5" FromRole="Vendedores" ToRole="TicketCompra" />
+  </EntityType>
+  <Association Name="FK__DetallesC__idcha__5070F446">
+    <End Role="Chatarra" Type="Self.Chatarra" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DetallesCompra" Type="Self.DetallesCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chatarra">
+        <PropertyRef Name="idchatarra" />
+      </Principal>
+      <Dependent Role="DetallesCompra">
+        <PropertyRef Name="idchatarra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrecioVen__idcha__5441852A">
+    <End Role="Chatarra" Type="Self.Chatarra" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PrecioVenta" Type="Self.PrecioVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chatarra">
+        <PropertyRef Name="idchatarra" />
+      </Principal>
+      <Dependent Role="PrecioVenta">
+        <PropertyRef Name="idchatarra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetallesC__idtic__5165187F">
+    <End Role="TicketCompra" Type="Self.TicketCompra" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DetallesCompra" Type="Self.DetallesCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketCompra">
+        <PropertyRef Name="idticketcompra" />
+      </Principal>
+      <Dependent Role="DetallesCompra">
+        <PropertyRef Name="idticketcompra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetallesV__idpre__52593CB8">
+    <End Role="PrecioVenta" Type="Self.PrecioVenta" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DetallesVenta" Type="Self.DetallesVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrecioVenta">
+        <PropertyRef Name="idprecioventa" />
+      </Principal>
+      <Dependent Role="DetallesVenta">
+        <PropertyRef Name="idprecioventa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetallesV__idtic__534D60F1">
+    <End Role="TicketVenta" Type="Self.TicketVenta" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DetallesVenta" Type="Self.DetallesVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketVenta">
+        <PropertyRef Name="idticketventa" />
+      </Principal>
+      <Dependent Role="DetallesVenta">
+        <PropertyRef Name="idticketventa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuarios__idempl__5AEE82B9">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="idempleado" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idempleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrecioVen__idloc__5535A963">
+    <End Role="LocalVenta" Type="Self.LocalVenta" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PrecioVenta" Type="Self.PrecioVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocalVenta">
+        <PropertyRef Name="idlocalventa" />
+      </Principal>
+      <Dependent Role="PrecioVenta">
+        <PropertyRef Name="idlocalventa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TicketCom__idusu__5629CD9C">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TicketCompra" Type="Self.TicketCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="TicketCompra">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TicketCom__idven__571DF1D5">
+    <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TicketCompra" Type="Self.TicketCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendedores">
+        <PropertyRef Name="idvendedor" />
+      </Principal>
+      <Dependent Role="TicketCompra">
+        <PropertyRef Name="idvendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TotalComp__idtic__59063A47">
+    <End Role="TicketCompra" Type="Self.TicketCompra" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TotalCompra" Type="Self.TotalCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketCompra">
+        <PropertyRef Name="idticketcompra" />
+      </Principal>
+      <Dependent Role="TotalCompra">
+        <PropertyRef Name="idticketcompra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TicketVen__idusu__5812160E">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TicketVenta" Type="Self.TicketVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="TicketVenta">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TotalVent__idtic__59FA5E80">
+    <End Role="TicketVenta" Type="Self.TicketVenta" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TotalVenta" Type="Self.TotalVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketVenta">
+        <PropertyRef Name="idticketventa" />
+      </Principal>
+      <Dependent Role="TotalVenta">
+        <PropertyRef Name="idticketventa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MetreciclawebfinalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Caja" EntityType="Self.Caja" />
+    <EntitySet Name="Chatarra" EntityType="Self.Chatarra" />
+    <EntitySet Name="DetallesCompra" EntityType="Self.DetallesCompra" />
+    <EntitySet Name="DetallesVenta" EntityType="Self.DetallesVenta" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+    <EntitySet Name="Gastos" EntityType="Self.Gastos" />
+    <EntitySet Name="LocalVenta" EntityType="Self.LocalVenta" />
+    <EntitySet Name="PrecioVenta" EntityType="Self.PrecioVenta" />
+    <EntitySet Name="TicketCompra" EntityType="Self.TicketCompra" />
+    <EntitySet Name="TicketVenta" EntityType="Self.TicketVenta" />
+    <EntitySet Name="TotalCompra" EntityType="Self.TotalCompra" />
+    <EntitySet Name="TotalVenta" EntityType="Self.TotalVenta" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <EntitySet Name="Vendedores" EntityType="Self.Vendedores" />
+    <AssociationSet Name="FK__DetallesC__idcha__5070F446" Association="Self.FK__DetallesC__idcha__5070F446">
+      <End Role="Chatarra" EntitySet="Chatarra" />
+      <End Role="DetallesCompra" EntitySet="DetallesCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrecioVen__idcha__5441852A" Association="Self.FK__PrecioVen__idcha__5441852A">
+      <End Role="Chatarra" EntitySet="Chatarra" />
+      <End Role="PrecioVenta" EntitySet="PrecioVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetallesC__idtic__5165187F" Association="Self.FK__DetallesC__idtic__5165187F">
+      <End Role="TicketCompra" EntitySet="TicketCompra" />
+      <End Role="DetallesCompra" EntitySet="DetallesCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetallesV__idpre__52593CB8" Association="Self.FK__DetallesV__idpre__52593CB8">
+      <End Role="PrecioVenta" EntitySet="PrecioVenta" />
+      <End Role="DetallesVenta" EntitySet="DetallesVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetallesV__idtic__534D60F1" Association="Self.FK__DetallesV__idtic__534D60F1">
+      <End Role="TicketVenta" EntitySet="TicketVenta" />
+      <End Role="DetallesVenta" EntitySet="DetallesVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuarios__idempl__5AEE82B9" Association="Self.FK__Usuarios__idempl__5AEE82B9">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrecioVen__idloc__5535A963" Association="Self.FK__PrecioVen__idloc__5535A963">
+      <End Role="LocalVenta" EntitySet="LocalVenta" />
+      <End Role="PrecioVenta" EntitySet="PrecioVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TicketCom__idusu__5629CD9C" Association="Self.FK__TicketCom__idusu__5629CD9C">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="TicketCompra" EntitySet="TicketCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TicketCom__idven__571DF1D5" Association="Self.FK__TicketCom__idven__571DF1D5">
+      <End Role="Vendedores" EntitySet="Vendedores" />
+      <End Role="TicketCompra" EntitySet="TicketCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TotalComp__idtic__59063A47" Association="Self.FK__TotalComp__idtic__59063A47">
+      <End Role="TicketCompra" EntitySet="TicketCompra" />
+      <End Role="TotalCompra" EntitySet="TotalCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TicketVen__idusu__5812160E" Association="Self.FK__TicketVen__idusu__5812160E">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="TicketVenta" EntitySet="TicketVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TotalVent__idtic__59FA5E80" Association="Self.FK__TotalVent__idtic__59FA5E80">
+      <End Role="TicketVenta" EntitySet="TicketVenta" />
+      <End Role="TotalVenta" EntitySet="TotalVenta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
